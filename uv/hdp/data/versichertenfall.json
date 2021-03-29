@@ -1,0 +1,16 @@
+{
+  "aktenzeichen": "2020031701",
+  "artDerPersonID": 64098000001154,
+  "artDerPersonKNZ": 4,
+  "artDerPersonPrompt": "Arbeitnehmer",
+  "artHeilverfahrenKNZ": "A",
+  "artHeilverfahrenPrompt": "Allgemeine Heilbehandlung",
+  "bearbstsPrompt": "Bearbeitung abgeschlossen",
+  "bezirksverwaltungPrompt": "Frankfurt",
+  "bezirksverwaltungKNZ": 1,
+  "krankenkasseIKNummer": 105177505,
+  "krankenkassenTypPrompt": "unbekannt",
+  "sachbearbeiter": "A26",
+  "personID": 152020000516514,
+  "mitgliedsnummer": 930063497
+}

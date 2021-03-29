@@ -1,0 +1,24 @@
+site_name: uv.hdp 
+
+
+theme:
+  name: 'material'
+  custom_dir: 'docs/theme'
+  palette:
+    primary: indigo 
+    accent: indigo
+  logo: 'favicon.ico'
+  favicon: 'favicon.ico'
+
+
+nav:
+- Übersicht: index.md
+
+
+markdown_extensions:
+- markdown_include.include:
+    base_path: docs
+
+plugins:
+- search
+- mkdocstrings
