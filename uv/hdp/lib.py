@@ -16,6 +16,7 @@ BASE_URL = "https://srv-app01/rul310ws/"
 AUTH_SERVICE = "de.hdpgmbh.framework.tools.services.runtime.CLoginService?wsdl"
 MUB_SERVICE = "de.hdpgmbh.mubsrv.business.srvdomain.CdsMUBSRV?wsdl"
 RUL_SERVICE = "de.hdpgmbh.rulsrv.business.srvdomain.CdsRulSrv?wsdl"
+EDOK_SERVICE = "de.hdpgmbh.rulsrv.business.srvdomain.CdsEdokRegistrieren?wsdl"
 
 
 class CusaWebService(object):
@@ -34,6 +35,137 @@ class CusaWebService(object):
         login_request = login_request_type(loginName=login, password=password)
         result = auth_service.service.login(login_request)
         return result.sessionToken
+
+    # 1.1   RULS001
+    def get_verifyExistsVersfallByVersfallAZ(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.verifyExistsVersfallByVersfallAZ(self.session_token, pid)
+        )
+        return result
+
+    # 1.2   RULS002
+    def get_rtvVersfallByAZ(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvVersfallByAZ(self.session_token, pid)
+        )
+        return result
+
+    # 1.3   RULS003
+    def get_verifyExistsVersfaelleByUnternehmenAZ(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.verifyExistsVersfaelleByUnternehmenAZ(self.session_token, pid)
+        )
+        return result
+
+    ## 1.4   RULS004
+    #def get_rtvListVersfaelleWithUnfalldatumAfterVgldatumByUnternehmensAZ(self, pid):
+    #    client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+    #    request_type = client.get_type('ns0:rtvListVersfaelleWithUnfalldatumAfterVgldatumByUnternehmensAZ')
+    #    constraint = client.get_type('ns1:listConstraint')(start=1, max=10, isOverflowAllowed=True)
+    #    result = client.service.rtvListVersfaelleWithUnfalldatumAfterVgldatumByUnternehmensAZ(
+    #        sessionToken=self.session_token, unternehmenAZ=pid, listConstraint=constraint)
+    #    return result
+
+    # 1.13   RULS014
+    def get_rtvVersicherungsfallByID(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvVersicherungsfallByID(self.session_token, pid)
+        )
+        return result
+
+    # 1.14   RULS015
+    def get_rtvVersichertePersonByID(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvVersichertePersonByID(self.session_token, pid)
+        )
+        return result
+
+    # 1.15   RULS016
+    def get_rtvMitgliedByMitgliedsnummer01(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvMitgliedByMitgliedsnummer01(self.session_token, pid)
+        )
+        return result
+
+    # 1.16   RULS017
+    def get_rtvIKDatensatzByIKNummer(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvIKDatensatzByIKNummer(self.session_token, pid)
+        )
+        return result
+
+    # 1.17   RULS018
+    def get_rtvAufbereiteteAdresseByIKNummer(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvAufbereiteteAdresseByIKNummer(self.session_token, pid)
+        )
+        return result
+
+    # 1.18   RULS019
+    def get_rtvAufbereiteteAdresseByPersonID(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvAufbereiteteAdresseByPersonID(self.session_token, pid)
+        )
+        return result
+
+    # 1.19   RULS020
+    def get_rtvAufbereiteteAdresseByMitgliedsnummer(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvAufbereiteteAdresseByMitgliedsnummer(self.session_token, pid)
+        )
+        return result
+
+    # 1.48.
+    def get_bereitstellen_eingangsdokument_id(self):
+        client = Client(self.BASE_URL + EDOK_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.rtvNewDokumentID(self.session_token)
+        )
+        return result
+
+    # 1.60.
+    def get_verifyRtvBerufskrankheitsFallByAktenzeichen(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.verifyRtvBerufskrankheitsFallByAktenzeichen(self.session_token, pid)
+        )
+        return result
+
+    # 1.64.
+    def get_verifyVersicherungsfallIsArbeitsunfall(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        #import pdb; pdb.set_trace()
+        result = serialize_object(
+            client.service.verifyVersicherungsfallIsArbeitsunfall(self.session_token, pid)
+        )
+        return result
+
+    # 1.65.
+    def get_rtvverifyVersicherungsfallIsBKFall(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        result = serialize_object(
+            client.service.verifyVersicherungsfallIsBKFall(self.session_token, pid)
+        )
+        return result
+
+    # 1.67   RULS072
+    def get_rtvListZugeordneteIKAdressen(self, pid):
+        client = Client(self.BASE_URL + RUL_SERVICE, transport=self.transport)
+        request_type = client.get_type('ns0:rtvListZugeordneteIKAdressen')
+        constraint = client.get_type('ns1:listConstraint')(start=1, max=10, isOverflowAllowed=True)
+        result = client.service.rtvListZugeordneteIKAdressen(
+            sessionToken=self.session_token, versfallID=pid, listConstraint=constraint)
+        return result
 
     def get_unternehmen_by_az(self, az):
         client = Client(self.BASE_URL + MUB_SERVICE, transport=self.transport)
